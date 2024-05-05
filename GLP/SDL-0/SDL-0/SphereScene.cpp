@@ -6,11 +6,12 @@ void SphereScene::LoadShaders()
 {
     m_vertexShader.LoadFrom("sphere.vert", VERTEX);
     m_fragmentShader.LoadFrom("sphere.frag", FRAGMENT);
+    m_geometryShader.LoadFrom("sphereGeo.shader", GEOMETRY);
 }
 
 void SphereScene::CreateShaderPrograms()
 {
-    m_Program.Compose({&m_vertexShader, &m_fragmentShader});
+    m_Program.Compose({&m_vertexShader, &m_fragmentShader, &m_geometryShader});
 }
 
 void SphereScene::VerticeInformationSlicer()

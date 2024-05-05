@@ -170,6 +170,7 @@
     <Content Include="Shaders\cubeTess.vert" />
     <Content Include="Shaders\sphere.frag" />
     <Content Include="Shaders\sphere.vert" />
+    <Content Include="Shaders\sphereGeo.shader" />
     <Content Include="Shaders\textureAnimVertex.shader" />
     <Content Include="Shaders\textureFragment.shader" />
     <Content Include="Shaders\textureVertex.shader" />
