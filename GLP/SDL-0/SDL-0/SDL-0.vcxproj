@@ -114,6 +114,9 @@
     <None Include="Shaders\rainbowVertex.shader" />
     <None Include="Shaders\simpleFragment.shader" />
     <None Include="Shaders\simpleVertex.shader" />
+    <None Include="Shaders\sphere.frag" />
+    <None Include="Shaders\sphere.vert" />
+    <None Include="Shaders\sphereGeo.shader" />
     <None Include="Shaders\terrainTessControl.shader" />
     <None Include="Shaders\terrainTessEvaluation.shader" />
     <None Include="Shaders\terrainTessFragment.shader" />

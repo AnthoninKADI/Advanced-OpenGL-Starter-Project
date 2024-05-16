@@ -6,12 +6,12 @@ void SphereScene::LoadShaders()
 {
     m_vertexShader.LoadFrom("sphere.vert", VERTEX);
     m_fragmentShader.LoadFrom("sphere.frag", FRAGMENT);
-    m_geometryShader.LoadFrom("sphereGeo.shader", GEOMETRY);
+    //m_geometryShader.LoadFrom("sphereGeo.shader", GEOMETRY);
 }
 
 void SphereScene::CreateShaderPrograms()
 {
-    m_Program.Compose({&m_vertexShader, &m_fragmentShader, &m_geometryShader});
+    m_Program.Compose({&m_vertexShader, &m_fragmentShader, /*&m_geometryShader*/ });
 }
 
 void SphereScene::VerticeInformationSlicer()
@@ -56,8 +56,6 @@ void SphereScene::SetupScene()
 
 void SphereScene::UpdateScene()
 {
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    
     float timeValue =  (float)SDL_GetTicks() / 1000;
 
     float delta = LastTick - timeValue;
@@ -83,4 +81,24 @@ void SphereScene::UpdateScene()
     m_Program.setMatrix4("projection", m_projection);
     //Draw triangles in the order of the index array
     glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, m_indicies.data());
+
+    if (wireframe)
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    else
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArraysInstanced(GL_PATCHES, 0, 4, 64 * 64);
+}
+
+void SphereScene::HandleInputs(SDL_Event& e)
+{
+    switch (e.type)
+    {
+    case SDL_KEYDOWN:
+        if (e.key.keysym.sym == SDLK_w)
+        {
+            //press W to switch with wireframe view
+            wireframe = !wireframe;
+        }
+
+    }
 }

@@ -111,6 +111,15 @@
     <ClCompile Include="Engine\Timer.cpp">
       <Filter>Fichiers de ressources\Utils\Gaetz Engine</Filter>
     </ClCompile>
+    <ClCompile Include="CubeScene.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereScene.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureScene.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\aminatedFragment.shader">
@@ -175,6 +184,15 @@
     </None>
     <None Include="Shaders\terrainTessEvaluation.shader">
       <Filter>Fichiers de ressources\Shaders\Terrain Tessellation</Filter>
+    </None>
+    <None Include="Shaders\sphere.frag">
+      <Filter>Fichiers de ressources\Shaders</Filter>
+    </None>
+    <None Include="Shaders\sphere.vert">
+      <Filter>Fichiers de ressources\Shaders</Filter>
+    </None>
+    <None Include="Shaders\sphereGeo.shader">
+      <Filter>Fichiers de ressources\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +270,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Timer.h">
       <Filter>Fichiers de ressources\Utils\Gaetz Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeScene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Object3D.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape3D.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereScene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureScene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

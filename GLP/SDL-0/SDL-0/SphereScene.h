@@ -13,12 +13,15 @@ private:
     Matrix4 m_projection, m_mv, m_rotation;
     Vector3 m_position;
     unsigned int m_vboV, m_vboI;
+    bool wireframe;
 
     std::vector<unsigned int> m_indicies, m_lineIndices;
 protected:
     void LoadShaders() override;
     void CreateShaderPrograms() override;
     void VerticeInformationSlicer() override;
+    void HandleInputs(SDL_Event& e) override;
+
 public:
     SphereScene();
     ~SphereScene() = default;
