@@ -1,16 +1,26 @@
-#version 450 core
+#version 330 core
 
 layout (triangles) in;
-layout (triangle_strip, max_vertices = 3) out;
+layout (line_strip, max_vertices = 2) out;
 
-uniform mat4 mv_matrix; 
-uniform mat4 projection; 
+out float DistanceToCenter;
 
-void main(void)
+void main() 
 {
-    for (int i = 0; i < 3; i++) {
-        gl_Position = projection * mv_matrix * gl_in[i].gl_Position;
-        EmitVertex();
-    }
+
+    vec4 center = (gl_in[0].gl_Position + gl_in[1].gl_Position + gl_in[2].gl_Position) / 3.0;
+    DistanceToCenter = 0;        
+    vec3 v0 = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 v1 = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+    vec3 normal = normalize(cross(v0, v1));
+
+    vec4 endpoint = center + vec4(normal * -0.5, 0.0);
+    
+    gl_Position = center;
+    EmitVertex();
+
+    gl_Position = endpoint;
+    EmitVertex();
     EndPrimitive();
+
 }
