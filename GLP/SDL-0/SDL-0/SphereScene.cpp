@@ -58,9 +58,8 @@ void SphereScene::SetupScene()
 
 void SphereScene::UpdateScene()
 {
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    glLineWidth(10);
+    glLineWidth(2);
 
     float timeValue = (float)SDL_GetTicks() / 1000;
     float delta = LastTick - timeValue;
@@ -83,11 +82,30 @@ void SphereScene::UpdateScene()
     m_Program.setMatrix4("projection", m_projection);
 
     glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, m_indicies.data());
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     m_programTess.Use();
     m_programTess.setMatrix4("mv_matrix", m_mv);
     m_programTess.setMatrix4("projection", m_projection);
 
     glDrawElements(GL_TRIANGLES, m_indicies.size(), GL_UNSIGNED_INT, m_indicies.data());
+
+    if (wireframe)
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    else
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArraysInstanced(GL_PATCHES, 0, 4, 64 * 64);
+}
+
+void SphereScene::HandleInputs(SDL_Event& e)
+{
+    switch (e.type)
+    {
+    case SDL_KEYDOWN:
+        if (e.key.keysym.sym == SDLK_w)
+        {
+            //press W to switch with wireframe view
+            wireframe = !wireframe;
+        }
+
+    }
 }

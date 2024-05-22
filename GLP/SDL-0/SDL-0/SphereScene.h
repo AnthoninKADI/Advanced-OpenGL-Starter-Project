@@ -14,6 +14,7 @@ private:
     Matrix4 m_projection, m_mv, m_rotation;
     Vector3 m_position;
     unsigned int m_vboV, m_vboI;
+    bool wireframe;
 
     unsigned int m_vboV2, m_vboI2;
     ShaderProgram m_Program2;
@@ -25,6 +26,7 @@ protected:
     void LoadShaders() override;
     void CreateShaderPrograms() override;
     void VerticeInformationSlicer() override;
+    void HandleInputs(SDL_Event& e) override;
 
 public:
     SphereScene();
